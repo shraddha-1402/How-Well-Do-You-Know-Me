@@ -1,76 +1,13 @@
 const rL = require("readline-sync");
 const chalk = require("chalk");
-
-var questions = [
-  {
-    question: "What is the name of my school?",
-    options: ["Saraswati Vidyalaya", "Saraswati Vidya Mandir", "Saraswati Vidyapeeth"],
-    answer: 0
-  },
-  {
-    question: "What do i like more?",
-    options: ["Shopping", "Exercising", "Eating Junk"],
-    answer: 1
-  },
-  {
-    question: "Which is my favourite rom-com book?",
-    options: ["Maybe Someday", "November 9", "Shadow Hunters"],
-    answer: 1
-  },
-  {
-    question: "Do i have a permanent license yet? ",
-    options: ["Yes", "No"],
-    answer: 1
-  },
-  {
-    question: "What is my sibling's name?",
-    options: ["Raj", "Rajesh", "Rajat"],
-    answer: 2
-  },
-  {
-    question: "What is my favorite food?",
-    options: ["Anything home cooked", "Pani Puri", "Pizza"],
-    answer: 0
-  },
-  {
-    question: "What is the color of my bicycle?",
-    options: ["Red", "Purple", "Pink"],
-    answer: 2
-  },
-  {
-    question: "What do i have?",
-    options: ["Earphones", "Headphones", "Both", "None"],
-    answer: 1
-  },
-  {
-    question: "Which beverage would i prefer among these?",
-    options: ["Cold Coffee", "Tea", "Orange Juice"],
-    answer: 0
-  },
-  {
-    question: "Who's songs i listen to the most?",
-    options: ["Ariana Grande", "Ed Sheeren", "Taylor Swift"],
-    answer: 2
-  },
-];
-
-var highScore = [
-  {
-    name: "Shraddha",
-    score: 10
-  },
-  {
-    name: "Urmila",
-    score: 7
-  }
-]
+const { questions, highScore } = require("./data.js");
 
 var score = 0, usrName = "";
 
 //function to print question and check answers
 function game(index, question, options, answer) {
   console.log("\n--------------------------------------\n");
-  console.log(chalk.cyanBright(`${index+1}. ${question}`));
+  console.log(chalk.cyanBright(`${index + 1}. ${question}`));
   var usrAns = rL.keyInSelect(options, "Enter: ");
   if (usrAns === answer) {
     console.log(chalk.green("\nYayy! You got that one 🤩"));
@@ -118,13 +55,13 @@ for (var i = 0; i < highScore.length; i++) {
     break;
   }
 }
-if(highScore.length<3 && score>5){
-	console.log(chalk.rgb(191, 9, 232)("Wow! You did well!👏\n\n"));
+if (highScore.length < 3 && score > 5) {
+  console.log(chalk.rgb(191, 9, 232)("Wow! You did well!👏\n\n"));
 }
 
 console.log(chalk.rgb(255, 236, 25)("Score board:"));
 highScore.forEach(e => {
-	console.log(`${e.name}: ${e.score}`);
+  console.log(`${e.name}: ${e.score}`);
 });
 console.log("\n\nThank you for taking the quiz ❤️ ❤️");
 
